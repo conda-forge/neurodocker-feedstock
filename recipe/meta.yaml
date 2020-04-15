@@ -1,10 +1,10 @@
 {% set name = "neurodocker" %}
-{% set version = "0.6.0" %}
-{% set sha256 = "ec03aa8543a6a58ed8fcabb855864a553c027da9082fb016075ea8731cab0c68" %}
+{% set version = "0.7.0" %}
+{% set sha256 = "188ef624b018e20e89edbe39750cae6d020044d4abcb31d686ef3d2aa7bec70a" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://github.com/ReproNim/{{ name }}/archive/{{ version }}.tar.gz
@@ -12,7 +12,7 @@ source:
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
   noarch: python
 
 requirements:
@@ -34,7 +34,7 @@ about:
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE
-  summary: "Neurodocker is a command-line program that generates custom Dockerfiles and Singularity recipes for neuroimaging and minifies existing containers."
+  summary: Neurodocker is a command-line program that generates custom Dockerfiles and Singularity recipes for neuroimaging and minifies existing containers.
 
 extra:
   recipe-maintainers:
