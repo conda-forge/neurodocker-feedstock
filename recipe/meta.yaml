@@ -1,31 +1,39 @@
 {% set name = "neurodocker" %}
-{% set version = "0.7.0" %}
-{% set sha256 = "188ef624b018e20e89edbe39750cae6d020044d4abcb31d686ef3d2aa7bec70a" %}
+{% set version = "0.9.1" %}
+{% set sha256 = "cda57fde147ad1dac4c9011aad292f2c60036242ecab87cb73bf6f920dd0f280" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/ReproNim/{{ name }}/archive/{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/neurodocker-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  entry_points:
+    - neurodocker = neurodocker.cli.cli:cli
   noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
   host:
-    - python >=3.5
     - pip
+    - python >=3.7
   run:
-    - python >=3.5
+    - click >=7.0,<8.0
+    - etelemetry >=0.2.0
     - jinja2 >=2.0
-    - pyyaml >=3.0
-    - etelemetry
+    - jsonschema >=3.0
+    - mypy_extensions
+    - python >=3.7
+    - pyyaml >=5.0
+    - typing-extensions
 
 test:
+  imports:
+    - neurodocker
   commands:
     - neurodocker --help
 
@@ -39,3 +47,4 @@ about:
 extra:
   recipe-maintainers:
     - npavlovikj
+    - acaprez
