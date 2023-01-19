@@ -1,6 +1,6 @@
 {% set name = "neurodocker" %}
-{% set version = "0.9.3" %}
-{% set sha256 = "87b31398a1c3ec6a302b1c72641dce7a4ac57c4c292cf4b779a6c96bcd27691e" %}
+{% set version = "0.9.4" %}
+{% set sha256 = "022fbc45c34c6a3e47b3d68d7f13a750ce9b686d050eee1312961d3b5db3b9a9" %}
 
 package:
   name: {{ name|lower }}
