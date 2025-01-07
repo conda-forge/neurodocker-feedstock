@@ -7,7 +7,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/neurodocker-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/neurodocker-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -15,12 +15,12 @@ build:
     - neurodocker = neurodocker.cli.cli:cli
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python {{ python_min }}
     - hatchling
     - hatch-vcs
   run:
@@ -29,11 +29,13 @@ requirements:
     - jinja2 >=2.0
     - jsonschema >=3.0
     - mypy_extensions
-    - python >=3.7
+    - python >={{ python_min }}
     - pyyaml >=5.0
     - typing-extensions
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - neurodocker
   commands:
