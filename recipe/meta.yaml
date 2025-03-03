@@ -1,13 +1,13 @@
 {% set name = "neurodocker" %}
-{% set version = "1.0.1" %}
-{% set sha256 = "613a41da549979a28feeefba8a4a029954c8ab10bdb4a69b9ccb907a481a7f52" %}
+{% set version = "2.0.0" %}
+{% set sha256 = "de3b9c2f8004f1e7a522586e68e78e2f9b5cf07092e684ebffad00b430f05043" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/neurodocker-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/neurodocker-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
